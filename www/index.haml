@@ -8,7 +8,7 @@
     %meta{ content: "telephone=no", name: "format-detection" }/
     %meta{ content: "no", name: "msapplication-tap-highlight" }/
     %meta{ content: "initial-scale=1, width=device-width, viewport-fit=cover", name: "viewport" }/
-    -# %meta{:content => "yes", :name => "mobile-web-app-capable"}/
+    -# %meta{ content: "yes",  name: "mobile-web-app-capable"}/
     -# icons - https://ionicons.com/ - https://github.com/ionic-team/ionicons
     %style{ scoped: true }
       :plain
@@ -22,7 +22,30 @@
     %title <3itcoin LN wallet
   %body
     .app
-      %ons-page
+      %ons-splitter
+        %ons-splitter-side#menu{ collapse: "",  side: "left",  swipeable: true,  width: "220px"}
+          %ons-page
+            %ons-list
+              %ons-list-item{ onclick: "fn.load('receive.html')",  tappable: ""}
+                Home
+              %ons-list-item{ onclick: "fn.load('settings.html')",  tappable: ""}
+                Settings
+              %ons-list-item{ onclick: "fn.load('about.html')",  tappable: ""}
+                About
+        %ons-splitter-content#content{ page: "receive.html" }
+
+      %ons-tabbar#main-tabbar{ position: "bottom" }
+
+        %ons-tab.receive{ class: "active", active: true, badge: "7",  icon: "ion-md-arrow-down", label: "Receive", page: "receive.html" }
+
+        %ons-tab.send{ icon: "ion-md-arrow-up", label: "Send", page: "send.html" }
+
+        %ons-tab.transactions{ icon: "ion-md-list", label: "Transactions", page: "transactions.html" }
+
+      -# page templates:
+
+    %template{ id: "receive.html" }
+      %ons-page#Receive
         %ons-toolbar
           .center Receive
           .right
@@ -30,26 +53,17 @@
               %script
                 :plain
                   const d = document
-                  d.querySelector(".refresh-btn").addEventListener("click", () => {
+                  d.querySelector(".refresh-btn").addEventListener("click", (): {
                     window.location = '/#1'
                   })
               %a.refresh-btn{ href: "#" }
                 %ons-icon{ icon: "ion-md-settings" }
 
-        %ons-tabbar#main-tabbar{ position: "bottom" }
 
-          %ons-tab.receive{ class: "active", active: true, badge: "7",  icon: "ion-md-arrow-down", label: "Receive", page: "receive.html" }
-
-          %ons-tab.send{ icon: "ion-md-arrow-up", label: "Send", page: "send.html" }
-
-          %ons-tab.transactions{ icon: "ion-md-list", label: "Transactions", page: "transactions.html" }
-
-      -# page templates:
-
-      %template{ id: "receive.html" }
-        %ons-page#Receive
           .s50
           .centered
+
+
 
             %ons-list
               %ons-list-header.centered.nopad Address
@@ -64,7 +78,7 @@
               %ons-list-item.input-items
                 .right
                   %a{ href: "#" }
-                    %ons-icon.list-item__icon{:icon => "ion-md-copy"}
+                    %ons-icon.list-item__icon{ icon: "ion-md-copy"}
                 %label.centered
                   %ons-input#address-input.nomargin.w-full.centered.text-grey{ readonly: true, value: "3N3RXbpGHn6bfvcE2nEYbvGHVPorVWgkeQ" }
 
@@ -80,7 +94,7 @@
             -#   %i.ion-md-copy
 
 
-          -# %ons-button{:modifier => "large"} large
+          -# %ons-button{ modifier: "large"} large
 
       %template{ id: "send.html" }
         %ons-page#Send
@@ -103,7 +117,7 @@
         %ons-page#Recover
           %p.centered
 
-          %div{:style => "text-align: center;"}
+          %div{ style: "text-align: center;"}
             - 1.upto(12) do |id|
               %p
                 %ons-input.word{ data: { id: "word-#{id}", idx: id } , modifier: "underbar", placeholder: "word #{id}" }
@@ -134,43 +148,31 @@
 
       -# -------------------
 
-      %ons-splitter
-        %ons-splitter-side#menu{:collapse => "", :side => "left", :swipeable => "", :width => "220px"}
-          %ons-page
-            %ons-list
-              %ons-list-item{:onclick => "fn.load('home.html')", :tappable => ""}
-                Home
-              %ons-list-item{:onclick => "fn.load('settings.html')", :tappable => ""}
-                Settings
-              %ons-list-item{:onclick => "fn.load('about.html')", :tappable => ""}
-                About
-        %ons-splitter-content#content{:page => "home.html"}
-        
       -# ---
-      %template{:id => "home.html"}
+      %template{ id: "home.html"}
         %ons-page
           %ons-toolbar
             .left
-              %ons-toolbar-button{:onclick => "fn.open()"}
-                %ons-icon{:icon => "md-menu"}
+              %ons-toolbar-button{ onclick: "fn.open()"}
+                %ons-icon{ icon: "md-menu"}
             .center
               Main
-          %p{:style => "text-align: center; opacity: 0.6; padding-top: 20px;"}
+          %p{ style: "text-align: center; opacity: 0.6; padding-top: 20px;"}
             Swipe right to open the menu!
-      %template{:id => "settings.html"}
+      %template{ id: "settings.html"}
         %ons-page
           %ons-toolbar
             .left
-              %ons-toolbar-button{:onclick => "fn.open()"}
-                %ons-icon{:icon => "md-menu"}
+              %ons-toolbar-button{ onclick: "fn.open()"}
+                %ons-icon{ icon: "md-menu"}
             .center
               Settings
-      %template{:id => "about.html"}
+      %template{ id: "about.html"}
         %ons-page
           %ons-toolbar
             .left
-              %ons-toolbar-button{:onclick => "fn.open()"}
-                %ons-icon{:icon => "md-menu"}
+              %ons-toolbar-button{ onclick: "fn.open()"}
+                %ons-icon{ icon: "md-menu"}
             .center
               About
 

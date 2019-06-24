@@ -19,14 +19,39 @@
 </head>
 <body>
 <div class='app'>
+<ons-splitter>
+<ons-splitter-side collapse='' id='menu' side='left' swipeable width='220px'>
 <ons-page>
+<ons-list>
+<ons-list-item onclick='fn.load(&#39;receive.html&#39;)' tappable=''>
+Home
+</ons-list-item>
+<ons-list-item onclick='fn.load(&#39;settings.html&#39;)' tappable=''>
+Settings
+</ons-list-item>
+<ons-list-item onclick='fn.load(&#39;about.html&#39;)' tappable=''>
+About
+</ons-list-item>
+</ons-list>
+</ons-page>
+</ons-splitter-side>
+<ons-splitter-content id='content' page='receive.html'></ons-splitter-content>
+</ons-splitter>
+<ons-tabbar id='main-tabbar' position='bottom'>
+<ons-tab active badge='7' class='active receive' icon='ion-md-arrow-down' label='Receive' page='receive.html'></ons-tab>
+<ons-tab class='send' icon='ion-md-arrow-up' label='Send' page='send.html'></ons-tab>
+<ons-tab class='transactions' icon='ion-md-list' label='Transactions' page='transactions.html'></ons-tab>
+</ons-tabbar>
+</div>
+<template id='receive.html'>
+<ons-page id='Receive'>
 <ons-toolbar>
 <div class='center'>Receive</div>
 <div class='right'>
 <ons-toolbar-button>
 <script>
 const d = document
-d.querySelector(".refresh-btn").addEventListener("click", () => {
+d.querySelector(".refresh-btn").addEventListener("click", (): {
   window.location = '/#1'
 })
 </script>
@@ -35,15 +60,6 @@ d.querySelector(".refresh-btn").addEventListener("click", () => {
 </a>
 </ons-toolbar-button>
 </div>
-</ons-toolbar>
-<ons-tabbar id='main-tabbar' position='bottom'>
-<ons-tab active badge='7' class='active receive' icon='ion-md-arrow-down' label='Receive' page='receive.html'></ons-tab>
-<ons-tab class='send' icon='ion-md-arrow-up' label='Send' page='send.html'></ons-tab>
-<ons-tab class='transactions' icon='ion-md-list' label='Transactions' page='transactions.html'></ons-tab>
-</ons-tabbar>
-</ons-page>
-<template id='receive.html'>
-<ons-page id='Receive'>
 <div class='s50'></div>
 <div class='centered'>
 <ons-list>
@@ -72,8 +88,8 @@ d.querySelector(".refresh-btn").addEventListener("click", () => {
 <ons-list-header class='centered nopad'>11.40 USD</ons-list-header>
 </ons-list>
 </div>
+</ons-toolbar>
 </ons-page>
-</template>
 <template id='send.html'>
 <ons-page id='Send'>
 <p class='centered'>
@@ -158,24 +174,6 @@ test
 <p class="event received">Device is Ready</p>
 </div>
 -->
-<ons-splitter>
-<ons-splitter-side collapse='' id='menu' side='left' swipeable='' width='220px'>
-<ons-page>
-<ons-list>
-<ons-list-item onclick='fn.load(&#39;home.html&#39;)' tappable=''>
-Home
-</ons-list-item>
-<ons-list-item onclick='fn.load(&#39;settings.html&#39;)' tappable=''>
-Settings
-</ons-list-item>
-<ons-list-item onclick='fn.load(&#39;about.html&#39;)' tappable=''>
-About
-</ons-list-item>
-</ons-list>
-</ons-page>
-</ons-splitter-side>
-<ons-splitter-content id='content' page='home.html'></ons-splitter-content>
-</ons-splitter>
 <template id='home.html'>
 <ons-page>
 <ons-toolbar>
@@ -221,7 +219,7 @@ About
 </ons-toolbar>
 </ons-page>
 </template>
-</div>
+</template>
 <script src='cordova.js' type='text/javascript'></script>
 <script src='node_modules/hyperhtml/min.js' type='text/javascript'></script>
 <script src='js/index.js' type='text/javascript'></script>

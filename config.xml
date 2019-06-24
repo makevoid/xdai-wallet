@@ -22,6 +22,7 @@
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
+    <exclude-files pattern="www/js/vendor/onsenui-dev.css" />
     <engine name="android" spec="^8.0.0" />
     <engine name="browser" spec="^6.0.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
