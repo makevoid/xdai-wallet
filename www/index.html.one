@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+        <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+        <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title><3itcoin wallet</title>
+    </head>
+    <body>
+        <div class="app">
+
+          <ons-page>
+            <ons-toolbar>
+              <div class="center">Tab 1</div>
+            </ons-toolbar>
+
+            <ons-tabbar swipeable position="auto">
+              <ons-tab page="tab1.html" label="Tab 1" icon="ion-home, material:md-home" badge="7" active>
+              </ons-tab>
+              <ons-tab page="tab2.html" label="Tab 2" icon="md-settings" active-icon="md-face">
+              </ons-tab>
+            </ons-tabbar>
+          </ons-page>
+
+          <template id="tab1.html">
+            <ons-page id="Tab1">
+              <p style="text-align: center;">
+                This is the first page.
+              </p>
+            </ons-page>
+          </template>
+
+          <template id="tab2.html">
+            <ons-page id="Tab2">
+              <p style="text-align: center;">
+                This is the second page.
+              </p>
+            </ons-page>
+          </template>
+
+          <!-- <h1><3itcoin wallet</h1>
+          <div id="deviceready" class="blink">
+              <p class="event listening">Connecting to Device</p>
+              <p class="event received">Device is Ready</p>
+          </div> -->
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

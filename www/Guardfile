@@ -1,0 +1,9 @@
+guard :shell do
+  watch(/^.+(\.haml|\.rb)$/) do |m|
+    puts system "set -xe; haml --trace index.haml > index.html"
+  end
+end
+
+# guard :haml do
+#   watch(/^.+(\.haml)$/)
+# end

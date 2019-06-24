@@ -1,0 +1,119 @@
+!!!
+%html
+  %head
+    / <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+    %meta{ content: "telephone=no", name: "format-detection" }/
+    %meta{ content: "no", name: "msapplication-tap-highlight" }/
+    %meta{ content: "initial-scale=1, width=device-width, viewport-fit=cover", name: "viewport" }/
+    %link{ href: "css/vendor/onsen.css", rel: "stylesheet" }/
+    %link{ href: "css/vendor/onsen-comp.css", rel: "stylesheet" }/
+    %script{ src: "js/vendor/onsen.js" }
+    %link{ href: "css/index.css", rel: "stylesheet", type: "text/css" }/
+    %link{ href: "css/index.css", rel: "stylesheet", type: "text/css" }/
+    %link{ href: "css/vendor/ionic-icons.css", rel: "stylesheet" }/
+
+    %title
+  %body
+    .app
+      %ons-page
+        %ons-toolbar
+          .center Receive
+        %ons-tabbar{ position: "auto", swipeable: "" }
+
+          :ruby
+            # pages:
+            #    receive (home)
+            #    send
+            class ::Array; alias :f :fetch; end
+            class ::Hash; alias :f :fetch; end
+
+            pages = [
+              # Receive
+              {
+                name: "receive",
+                label: "Receive",
+                icon: "square",
+              },
+
+              # Send
+              {
+                name: "send",
+                label: "Send",
+                icon: "circle",
+              },
+            ]
+
+            page_statuses = [{
+                active: true,
+                page: "receive",
+              }, {
+                active: false,
+                page: "send",
+              }
+            ]
+
+
+          - pages.each_with_index do |page, idx|
+            :ruby
+              status   = page_statuses.f idx
+              template = page.f :name
+              icon     = page.f :icon
+              attrs = {
+                label: page.f(:label),
+                active: true,
+                badge: "7",
+                icon: "ion-square",
+                page: "#{template}.html"
+              }
+            -# - icon     = "#{page.f(:name)}-ico"
+            %ons-tab.receive{ attrs.merge( class: page.f(:name) ) }
+
+            -# Receive
+            -# %ons-tab.receive{ class: page.f(:name), active: true, badge: "7",  icon: "ion-home, material:md-#{icon}", label: "Receive", page: "#{template}.html" }
+            -#
+            -# Send
+            -# %ons-tab.send{ "active-icon": "md-face", icon: "md-settings", label: "Send", page: "tab2.html" }
+
+      -# page templates:
+
+      :ruby
+        def CreateTemplate(&block)
+          # ....
+        end
+
+
+      -# define template
+      - template = "receive"
+      -# template = CreateTemplate(name) # do
+      %template{ id: "#{template}.html" }
+        %ons-page#Receive
+          %p{ style: "text-align: center;" }
+            This is the first page!!!!!!!
+
+      - template = "send"
+      %template{ id: "#{template}.html" }
+        %ons-page#Send
+          %p{ style: "text-align: center;" }
+
+            -# Send
+            -# or "connect to send" (lesser oprtion)
+
+            -# connecting to server
+            %p.event.listening Connecting to Device
+            %p.event.received Device is Ready
+
+            -# connecting to NFC
+            %p.event.listening Connecting to Device
+            %p.event.received Device is Ready
+
+      /
+        <h1><3itcoin wallet</h1>
+        <div id="deviceready" class="blink">
+        <p class="event listening">Connecting to Device</p>
+        <p class="event received">Device is Ready</p>
+        </div>
+
+        <script src="https://unpkg.com/ionicons@4.5.10-1/dist/ionicons.js"></script>
+
+    %script{ src: "cordova.js",  type: "text/javascript" }
+    %script{ src: "js/index.js", type: "text/javascript" }
