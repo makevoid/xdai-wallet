@@ -4,6 +4,7 @@ guard :shell do
   end
 end
 
-# guard :haml do
-#   watch(/^.+(\.haml)$/)
-# end
+guard :haml do
+  watch(/^(receive|send|transactions)(\.haml)$/)
+  # watch(/^.+(\.haml)$/)
+end
