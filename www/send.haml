@@ -20,20 +20,19 @@
 
   .s20
   %ons-list{ modifier: "inset" }
-    %ons-list-header.t-center Recipient
     %ons-list-item
       .s10
       %p
-        %ons-input{ float: "",  modifier: "underbar",  placeholder: "3address....",  type: "text" }
-    %ons-list-header.t-center Amount (bits)
+        %ons-input{ float: "",  modifier: "underbar",  placeholder: "Recipient",  type: "text" }
+    %ons-list-header.t-center
     %ons-list-item
       .s30
       %p
-        %ons-input{ float: "",  modifier: "underbar",  placeholder: "e.g. 1.000",  type: "text" }
+        %ons-input{ float: "",  modifier: "underbar",  placeholder: "Amount (bits)",  type: "text" }
     %ons-list-item
       .s10
       %p.w-full.t-center
         %ons-button.centered{ modifier: "large", onclick: "fn.walletSend()" } Send
 
-%ons-fab{ position: "bottom right" }
-  %ons-icon{ icon: "ion-md-send" }
+-# %ons-fab{ position: "bottom right" }
+-#   %ons-icon{ icon: "ion-md-send" }

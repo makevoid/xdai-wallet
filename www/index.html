@@ -24,8 +24,8 @@
 <template id='tabbar.html'>
 <ons-page>
 <ons-tabbar id='main-tabbar' position='bottom'>
-<ons-tab class='active receive' icon='ion-md-arrow-down' label='Receive' page='receive.html'></ons-tab>
-<ons-tab active class='send' icon='ion-md-arrow-up' label='Send' page='send.html'></ons-tab>
+<ons-tab active class='active receive' icon='ion-md-arrow-down' label='Receive' page='receive.html'></ons-tab>
+<ons-tab class='send' icon='ion-md-arrow-up' label='Send' page='send.html'></ons-tab>
 <ons-tab badge='2' class='transactions' icon='ion-md-list' label='Transactions' page='transactions.html'></ons-tab>
 </ons-tabbar>
 
@@ -58,18 +58,17 @@ Paste
 </ons-button>
 <div class='s20'></div>
 <ons-list modifier='inset'>
-<ons-list-header class='t-center'>Recipient</ons-list-header>
 <ons-list-item>
 <div class='s10'></div>
 <p>
-<ons-input float='' modifier='underbar' placeholder='3address....' type='text'></ons-input>
+<ons-input float='' modifier='underbar' placeholder='Recipient' type='text'></ons-input>
 </p>
 </ons-list-item>
-<ons-list-header class='t-center'>Amount (bits)</ons-list-header>
+<ons-list-header class='t-center'></ons-list-header>
 <ons-list-item>
 <div class='s30'></div>
 <p>
-<ons-input float='' modifier='underbar' placeholder='e.g. 1.000' type='text'></ons-input>
+<ons-input float='' modifier='underbar' placeholder='Amount (bits)' type='text'></ons-input>
 </p>
 </ons-list-item>
 <ons-list-item>
@@ -80,9 +79,6 @@ Paste
 </ons-list-item>
 </ons-list>
 </div>
-<ons-fab position='bottom right'>
-<ons-icon icon='ion-md-send'></ons-icon>
-</ons-fab>
 
 </ons-page>
 </template>
@@ -152,8 +148,8 @@ console.log("aaa")
 <ons-icon class='list-item__icon' icon='ion-md-arrow-down'></ons-icon>
 </div>
 <div class='center'>
-Received 10.000 bits from '3Me2ZD....v9P'
-<span class='tx'>- tx: a1f2b1...</span>
+Receiving 10.000 bits (0 conf.) from '3Me2ZD....v9P'
+<span class='tx'>tx: a1f2b1...</span>
 </div>
 </ons-list-item>
 <div class='s3'></div>
@@ -164,7 +160,7 @@ Received 10.000 bits from '3Me2ZD....v9P'
 </div>
 <div class='center'>
 Sent 3.000 bits to '3FhvRV....NDe'
-<span class='tx'>- tx: b23dc2...</span>
+<span class='tx'>tx: b23dc2...</span>
 </div>
 </ons-list-item>
 <div class='s3'></div>
@@ -175,7 +171,7 @@ Sent 3.000 bits to '3FhvRV....NDe'
 </div>
 <div class='center'>
 Received 26.000 bits from '386SqU....BJV'
-<span class='tx'>- tx: 45fe31...</span>
+<span class='tx'>tx: 45fe31...</span>
 </div>
 </ons-list-item>
 </ons-list>
