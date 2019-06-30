@@ -8,6 +8,12 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+  /* margin: 0 auto; */
+}
+
+
+.t-center {
+  text-align: center;
 }
 
 .center-imp {
@@ -63,4 +69,15 @@ a {
 
 ons-icon .ion-md-arrow-down {
   display: none;
+}
+
+/* screens - transactions */
+
+.transactions.tx-list  {
+
+}
+
+.transactions.tx-list span.tx {
+  margin-left: 5px;
+  font-size: 0.8em;
 }

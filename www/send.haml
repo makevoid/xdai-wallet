@@ -6,10 +6,34 @@
         %ons-icon{ icon: "ion-md-settings" }
 
 .centered
-
   .s30
 
   %ons-button
     %i.ion-md-qr-scanner
     \&nbsp;
     Scan QR
+  .s10
+  %ons-button
+    %i.ion-md-clipboard
+    \&nbsp;
+    Paste
+
+  .s20
+  %ons-list{ modifier: "inset" }
+    %ons-list-header.t-center Recipient
+    %ons-list-item
+      .s10
+      %p
+        %ons-input{ float: "",  modifier: "underbar",  placeholder: "3address....",  type: "text" }
+    %ons-list-header.t-center Amount (bits)
+    %ons-list-item
+      .s30
+      %p
+        %ons-input{ float: "",  modifier: "underbar",  placeholder: "e.g. 1.000",  type: "text" }
+    %ons-list-item
+      .s10
+      %p.w-full.t-center
+        %ons-button.centered{ modifier: "large", onclick: "fn.walletSend()" } Send
+
+%ons-fab{ position: "bottom right" }
+  %ons-icon{ icon: "ion-md-send" }

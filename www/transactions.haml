@@ -7,9 +7,29 @@
 
 .centered
 
-  .s30
+  %ons-list.transactions.tx-list
+    %ons-list-header Today
+    %ons-list-item
+      .left
+        %ons-icon.list-item__icon{ icon: "ion-md-arrow-down" }
+      .center
+        Received 10.000 bits from '3Me2ZD....v9P'
+        %span.tx - tx: a1f2b1...
 
-  %ons-button
-    %i.ion-md-qr-scanner
-    \&nbsp;
-    Reload
+    .s3
+    %ons-list-header Yesterday
+    %ons-list-item
+      .left
+        %ons-icon.list-item__icon{ icon: "ion-md-arrow-up" }
+      .center
+        Sent 3.000 bits to '3FhvRV....NDe'
+        %span.tx - tx: b23dc2...
+
+    .s3
+    %ons-list-header 26/06/19
+    %ons-list-item
+      .left
+        %ons-icon.list-item__icon{ icon: "ion-md-arrow-down" }
+      .center
+        Received 26.000 bits from '386SqU....BJV'
+        %span.tx - tx: 45fe31...
