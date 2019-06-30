@@ -16,12 +16,12 @@ It should be easy (now that I have a LN [lnd] node fully synced and working to t
 
 It would be nice to have one wallet for each of this options, I should complete #1 and #3 thou before starting all 6+ (I haven't listed doge but it's too :much-wow: to not attempt it :D).
 
-1 ) BTC - Lightning (L2)
-2 ) BTC
-3 ) ETH - XDAI (L3..) (sort of "lightning", but if the authorities fail, or if dai fails, that's bad )
-4 ) ETH - DAI (L3.)
-5 ) BCH (L3)
-6 ) ETH (L3)
+- 1 ) BTC - Lightning (L2)
+- 2 ) BTC
+- 3 ) ETH - XDAI (L3..) (sort of "lightning", but if the authorities fail, or if dai fails, that's bad, byebye \*coins)
+- 4 ) ETH - DAI (L3.)
+- 5 ) BCH (L3)
+- 6 ) ETH (L3)
 
 
 ### Wallet Feature Baseline
