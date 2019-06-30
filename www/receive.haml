@@ -2,13 +2,7 @@
   .center Receive
   .right
     %ons-toolbar-button
-      %script
-        :plain
-          const d = document
-          d.querySelector(".refresh-btn").addEventListener("click", (): {
-            window.location = '/#1'
-          })
-      %a.refresh-btn{ href: "#" }
+      %a.refresh-btn{ onclick: "fn.refreshPage()" }
         %ons-icon{ icon: "ion-md-settings" }
 
 .s50
@@ -37,3 +31,6 @@
     %ons-list-header.centered.nopad Balance
     %ons-list-header.centered.nopad 1023 bits
     %ons-list-header.centered.nopad 11.40 USD
+
+%script
+  console.log("aaa")

@@ -1,12 +1,15 @@
+%ons-toolbar
+  .center Send
+  .right
+    %ons-toolbar-button
+      %a.refresh-btn{ onclick: "fn.refreshPage()" }
+        %ons-icon{ icon: "ion-md-settings" }
 
-%template{ id: "send.html" }
-  %ons-page#Send
-    %p.centered
-      test
+.centered
 
-    .centered
+  .s30
 
-      %ons-button
-        %i.ion-md-qr-scanner
-        \&nbsp;
-        Scan QR
+  %ons-button
+    %i.ion-md-qr-scanner
+    \&nbsp;
+    Scan QR

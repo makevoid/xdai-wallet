@@ -39,6 +39,12 @@
 .text-grey, .text-grey > input { color: #BBB; }
 
 
+/* colors */
+
+a {
+  color: #38d;
+}
+
 /* screens - receive */
 
 .qr img {
