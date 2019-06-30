@@ -1,0 +1,6 @@
+desc "guard"
+task :guard do
+  sh "bundle exec guard"
+end
+
+task default: :guard

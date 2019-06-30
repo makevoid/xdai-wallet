@@ -1,5 +1,5 @@
 :ruby
-  require_relative 'constants'
+  require_relative 'env'
 
 !!!
 %html
@@ -17,35 +17,53 @@
     %link{ href: "css/vendor/onsen.css", rel: "stylesheet" }/
     %link{ href: "css/vendor/onsen-comp.css", rel: "stylesheet" }/
     %link{ href: "css/vendor/onsen-theme.css", rel: "stylesheet" }/
-    %script{ src: "js/vendor/onsen.js" }
+    - onsen_prod = false
+    -# - onsen_prod = true
+    - unless onsen_prod
+      %script console.warn("Switch to Onsen minified!")
+      %script{ src: "js/vendor/onsenui-dev.js" }
+    - else
+      %script{ src: "js/vendor/onsen.js" }
     %link{ href: "css/index.css", rel: "stylesheet", type: "text/css" }/
     %title <3itcoin LN wallet
   %body
     .app
+      %template{:id => "page.html"}
+        test
+
       %ons-splitter
         %ons-splitter-side#menu{ collapse: "",  side: "left",  swipeable: true,  width: "220px"}
           %ons-page
             %ons-list
               %ons-list-item{ onclick: "fn.load('receive.html')",  tappable: ""}
-                Home
-              %ons-list-item{ onclick: "fn.load('settings.html')",  tappable: ""}
-                Settings
-              %ons-list-item{ onclick: "fn.load('about.html')",  tappable: ""}
-                About
-        %ons-splitter-content#content{ page: "receive.html" }
+        -# %ons-splitter-content#content{:page => "page.html"}
+        %ons-splitter-content#content
+          %ons-page
+            - partial "receive"
 
-      %ons-tabbar#main-tabbar{ position: "bottom" }
+      -# %ons-splitter
+      -#   %ons-splitter-side#menu{ collapse: "",  side: "left",  swipeable: true,  width: "220px"}
+      -#     %ons-page
+      -#       %ons-list
+      -#         %ons-list-item{ onclick: "fn.load('receive.html')",  tappable: ""}
+      -#           Home
+      -#         %ons-list-item{ onclick: "fn.load('settings.html')",  tappable: ""}
+      -#           Settings
+      -#         %ons-list-item{ onclick: "fn.load('about.html')",  tappable: ""}
+      -#           About
+      -#   %ons-splitter-content#content{ page: "receive.html" }
 
-        %ons-tab.receive{ class: "active", active: true, badge: "7",  icon: "ion-md-arrow-down", label: "Receive", page: "receive.html" }
-
-        %ons-tab.send{ icon: "ion-md-arrow-up", label: "Send", page: "send.html" }
-
-        %ons-tab.transactions{ icon: "ion-md-list", label: "Transactions", page: "transactions.html" }
+      -# %ons-tabbar#main-tabbar{ position: "bottom" }
+      -#
+      -#   %ons-tab.receive{ class: "active", active: true, badge: "7",  icon: "ion-md-arrow-down", label: "Receive", page: "receive.html" }
+      -#
+      -#   %ons-tab.send{ icon: "ion-md-arrow-up", label: "Send", page: "send.html" }
+      -#
+      -#   %ons-tab.transactions{ icon: "ion-md-list", label: "Transactions", page: "transactions.html" }
 
       -# page templates:
 
-    
 
-    %script{ src: "cordova.js",  type: "text/javascript" }
-    %script{ src: "node_modules/hyperhtml/min.js",  type: "text/javascript" }
-    %script{ src: "js/index.js", type: "text/javascript" }
+    -# %script{ src: "cordova.js",  type: "text/javascript" }
+    -# %script{ src: "node_modules/hyperhtml/min.js",  type: "text/javascript" }
+    -# %script{ src: "js/index.js", type: "text/javascript" }

@@ -1,41 +1,39 @@
-%template{ id: "receive.html" }
-  %ons-page#Receive
-    %ons-toolbar
-      .center Receive
+%ons-toolbar
+  .center Receive
+  .right
+    %ons-toolbar-button
+      %script
+        :plain
+          const d = document
+          d.querySelector(".refresh-btn").addEventListener("click", (): {
+            window.location = '/#1'
+          })
+      %a.refresh-btn{ href: "#" }
+        %ons-icon{ icon: "ion-md-settings" }
+
+.s50
+.centered
+
+  %ons-list
+    %ons-list-header.centered.nopad Address
+  -# %p.centered Address
+
+  .qr
+    %img.rel{ src: "assets/img/qr_sample.png" }
+
+  .s20
+
+  %ons-list.w-inner.centered
+    %ons-list-item.input-items
       .right
-        %ons-toolbar-button
-          %script
-            :plain
-              const d = document
-              d.querySelector(".refresh-btn").addEventListener("click", (): {
-                window.location = '/#1'
-              })
-          %a.refresh-btn{ href: "#" }
-            %ons-icon{ icon: "ion-md-settings" }
+        %a{ href: "#" }
+          %ons-icon.list-item__icon{ icon: "ion-md-copy"}
+      %label.centered
+        %ons-input#address-input.nomargin.w-full.centered.text-grey{ readonly: true, value: "3N3RXbpGHn6bfvcE2nEYbvGHVPorVWgkeQ" }
 
-      .s50
-      .centered
+  .s20
 
-        %ons-list
-          %ons-list-header.centered.nopad Address
-        -# %p.centered Address
-
-        .qr
-          %img{ src: "assets/img/qr_sample.png" }
-
-        .s20
-
-        %ons-list.w-inner.centered
-          %ons-list-item.input-items
-            .right
-              %a{ href: "#" }
-                %ons-icon.list-item__icon{ icon: "ion-md-copy"}
-            %label.centered
-              %ons-input#address-input.nomargin.w-full.centered.text-grey{ readonly: true, value: "3N3RXbpGHn6bfvcE2nEYbvGHVPorVWgkeQ" }
-
-        .s20
-
-        %ons-list
-          %ons-list-header.centered.nopad Balance
-          %ons-list-header.centered.nopad 1023 bits
-          %ons-list-header.centered.nopad 11.40 USD
+  %ons-list
+    %ons-list-header.centered.nopad Balance
+    %ons-list-header.centered.nopad 1023 bits
+    %ons-list-header.centered.nopad 11.40 USD

@@ -1,5 +1,9 @@
 /* utils */
 
+.rel {
+  position: relative;
+}
+
 .centered {
   text-align: center;
   margin-left: auto;
