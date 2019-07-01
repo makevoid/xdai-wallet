@@ -1,5 +1,13 @@
 const d = document
 
+class App {
+  constructor() {
+    this.ethRpcHost = "63.35.248.254"
+  }
+
+}
+
+
 const app = {
     // Application Constructor
     initialize: function() {
@@ -15,30 +23,19 @@ const app = {
     },
 
     // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        const parentElement = document.getElementById(id)
-        // const listeningElement = parentElement.querySelector('.listening')
-        // const receivedElement = parentElement.querySelector('.received')
-
-        // listeningElement.setAttribute('style', 'display:none')
-        // receivedElement.setAttribute('style', 'display:block')
-        //
-        // console.log('Received Event: ' + id)
+    receivedEvent: function(evtId) {
+        console.log('Received Event: ' + evtId)
 
         console.log("ready")
         bindButtons()
     }
 }
 
-
-
 const bindButtons = () => {
   // d.querySelector(".refresh-btn").addEventListener("click", refreshPage)
 }
 
-
 app.initialize()
-
 
 //  --------
 
@@ -80,31 +77,3 @@ main.refreshPage = () => {
   console.log(`refreshing ${main.currentPage}`)
   main.load(main.currentPage)
 }
-
-// TODO: move to unobtrusive binding
-// page.querySelector('[component="button/save-task"]').onclick = function() {
-
-
-//
-// window.fn = {}
-//
-// window.fn.toggleMenu = () => {
-//   document.getElementById('appSplitter').right.toggle()
-// }
-//
-// window.fn.loadView = (index) => {
-//   document.getElementById('appTabbar').setActiveTab(index)
-//   document.getElementById('sidemenu').close()
-// }
-//
-// window.fn.loadLink = (url) => {
-//   window.open(url, '_blank')
-// }
-//
-// window.fn.pushPage = (page, anim) => {
-//   if (anim) {
-//     document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title }, animation: anim })
-//   } else {
-//     document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title } })
-//   }
-// }
