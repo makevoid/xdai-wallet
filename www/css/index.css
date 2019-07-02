@@ -11,7 +11,6 @@
   /* margin: 0 auto; */
 }
 
-
 .t-center {
   text-align: center;
 }
@@ -34,7 +33,6 @@
 .s90{ height: 90px; }
 .s100{ height: 100px; }
 
-
 .nomargin { margin: 0; }
 .nopad { padding: 0; }
 
@@ -43,7 +41,6 @@
 .w-full {width: 100%;}
 
 .text-grey, .text-grey > input { color: #BBB; }
-
 
 /* colors */
 
@@ -57,14 +54,12 @@ a {
   width: 28%;
 }
 
-
 .ons-tabbar .tabbar__icon {
 
 }
 
 .ons-tabbar#main-tabbar .tabbar__label {
   line-height: 6;
-
 }
 
 ons-icon .ion-md-arrow-down {

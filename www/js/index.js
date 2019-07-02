@@ -71,6 +71,19 @@ main.load = (page) => {
     .then(bindButtons)
     .then(main.setCurrentPage(page))
     .catch(contentLoadFailed)
+
+  // refactored:
+  //
+  // return (async () => {
+  //   const content  = d.querySelector('#content')
+  //   const splitter = d.querySelector('#splitter')
+  //   const contentIsLoaded = await content.load(page)
+  //   splitter.close.bind(splitter)
+  //   bindButtons()
+  //   main.setCurrentPage(page)
+  //   console.log("contentIsLoaded:", contentIsLoaded)
+  //   return contentIsLoaded
+  // })()
 }
 
 main.refreshPage = () => {
