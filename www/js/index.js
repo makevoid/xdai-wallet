@@ -1,13 +1,5 @@
 const d = document
 
-class App {
-  constructor() {
-    this.ethRpcHost = "63.35.248.254"
-  }
-
-}
-
-
 const app = {
     // Application Constructor
     initialize: function() {
