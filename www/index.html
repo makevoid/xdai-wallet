@@ -74,7 +74,7 @@ Paste
 <ons-list-item>
 <div class='s10'></div>
 <p class='w-full t-center'>
-<ons-button class='centered' modifier='large' onclick='fn.walletSend()'>Send</ons-button>
+<ons-button class='centered padded' modifier='large' onclick='fn.walletSend()'>Send</ons-button>
 </p>
 </ons-list-item>
 </ons-list>
@@ -116,14 +116,15 @@ Paste
 </ons-list-item>
 </ons-list>
 <div class='s20'></div>
-<ons-list>
+<ons-list class='balances'>
 <ons-list-header class='centered nopad'>Balance</ons-list-header>
-<ons-list-header class='centered nopad'>1023 bits</ons-list-header>
-<ons-list-header class='centered nopad'>11.40 USD</ons-list-header>
+<ons-list-header class='centered nopad balance-crypto'>.... bits</ons-list-header>
+<ons-list-header class='centered nopad balance-fiat'>.... USD</ons-list-header>
 </ons-list>
 </div>
 <script>
-console.log("aaa")
+<!-- / TODO if page == receive -->
+<!-- / console.log("receive page loaded") -->
 </script>
 
 </ons-page>
@@ -219,7 +220,7 @@ Settings
 </ons-splitter>
 </div>
 <script src='cordova.js' type='text/javascript'></script>
-<script src='node_modules/web3/dist/web3.umd.js' type='text/javascript'></script>
+<script src='js/lib/eth-keychain/bundle-lib.js' type='text/javascript'></script>
 <script src='js/index.js' type='text/javascript'></script>
 </body>
 </html>

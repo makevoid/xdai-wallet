@@ -1,3 +1,9 @@
+/* reset */
+
+/* html, html > body * {
+  box-sizing: border-box;
+} */
+
 /* utils */
 
 .rel {
@@ -75,4 +81,18 @@ ons-icon .ion-md-arrow-down {
 .transactions.tx-list span.tx {
   margin-left: 5px;
   font-size: 0.8em;
+}
+
+centered padded button button--large {
+
+}
+
+.padded {
+  padding-top: 10px;
+  padding-bottom: 8px;
+  width: 80%;
+}
+
+.fw-bold {
+  font-weight: bold;
 }
