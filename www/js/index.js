@@ -1,33 +1,8 @@
 const d = document
 
-const app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false)
-    },
-
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-        this.receivedEvent('deviceready')
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(evtId) {
-        console.log('Received Event: ' + evtId)
-
-        console.log("ready")
-        bindButtons()
-    }
-}
-
 const bindButtons = () => {
   // d.querySelector(".refresh-btn").addEventListener("click", refreshPage)
 }
-
-app.initialize()
 
 //  --------
 

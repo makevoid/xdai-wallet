@@ -6,8 +6,8 @@ First iteration for a crypto wallet, coin backend, bitcoin (of course :D), light
 
 Currently in alpha status, exploring:
 
-- html5 generation via haml (this branch) / pug (possible option)
-- html5 customelements (preferred option)
+- HTML5 generation via haml (this branch) / pug (possible option)
+- HTML5 customelements (preferred option)
 - svelte or riot.js (nice options, learn svelte or reuse riot.js boilerplate - extract from: https://github.com/appliedblockchain/appii_ui-old/tree/master/comp)
 
 It should be easy (now that I have a LN [lnd] node fully synced and working to test the BTC version), but I would like to reuse the UI to do another payment oriented wallet which may come first than the bitcoin LN one.
