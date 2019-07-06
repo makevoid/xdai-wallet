@@ -4,11 +4,7 @@
 
 First iteration for a crypto wallet, coin backend, bitcoin (of course :D), lightning network version (LN is a layer 2 protocol for fast instant transfer).
 
-Currently in alpha status, exploring:
-
-- html5 generation via haml (this branch) / pug (possible option)
-- html5 customelements (preferred option)
-- svelte or riot.js (nice options, learn svelte or reuse riot.js boilerplate - extract from: https://github.com/appliedblockchain/appii_ui-old/tree/master/comp)
+The current implementation is in JS (no preprocessors, js lib has node and browser targets) + haml
 
 It should be easy (now that I have a LN [lnd] node fully synced and working to test the BTC version), but I would like to reuse the UI to do another payment oriented wallet which may come first than the bitcoin LN one.
 
@@ -23,6 +19,20 @@ It would be nice to have one wallet for each of this options, I should complete 
 - 5 ) BCH (L3)
 - 6 ) ETH (L3)
 
+### TODO:
+
+unit tests, this was meant to be a prototype, now I need to write tests
+
+// tests neeed:
+
+// unit:
+
+// - wallet init
+
+// integration:
+
+// - wallet sendtx (this is an integration test the test will require
+// this test has already been written in this file: 
 
 ### Wallet Feature Baseline
 
