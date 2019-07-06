@@ -10,7 +10,8 @@ const createLnRpc = require('@radar/lnrpc')
     server:    '34.241.105.22:10009',
     //server:       'localhost:10009',
     tls:          './tls.cert',
-    macaroonPath: './admin.macaroon',
+    macaroonPath: './MAC-KEY.macaroon',
+    // macaroonPath: './admin.macaroon',
   })
 
   try {
