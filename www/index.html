@@ -22,7 +22,7 @@
 <body>
 <div class='app'>
 <template id='tabbar.html'>
-<ons-page>
+<ons-page class='tpl-tabbar'>
 <ons-tabbar id='main-tabbar' position='bottom'>
 <ons-tab active class='active receive' icon='ion-md-arrow-down' label='Receive' page='receive.html'></ons-tab>
 <ons-tab class='send' icon='ion-md-arrow-up' label='Send' page='send.html'></ons-tab>
@@ -32,7 +32,7 @@
 </ons-page>
 </template>
 <template id='send.html'>
-<ons-page>
+<ons-page class='tpl-send'>
 <ons-toolbar>
 <div class='center'>Send</div>
 <div class='right'>
@@ -83,7 +83,7 @@ Paste
 </ons-page>
 </template>
 <template id='receive.html'>
-<ons-page>
+<ons-page class='tpl-receive'>
 <ons-toolbar>
 <div class='center'>Receive</div>
 <div class='right'>
@@ -95,14 +95,14 @@ Paste
 </div>
 </ons-toolbar>
 <div class='s50'></div>
-<div class='centered'>
+<div class='receive-screen centered'>
 <ons-list>
 <ons-list-header class='centered nopad'>Address</ons-list-header>
 </ons-list>
 <div class='qr'>
 <img class='rel' src='assets/img/qr_sample.png'>
 </div>
-<div class='s20'></div>
+<div class='s30'></div>
 <ons-list class='w-inner centered'>
 <ons-list-item class='input-items'>
 <div class='right'>
@@ -111,15 +111,18 @@ Paste
 </a>
 </div>
 <label class='centered'>
-<ons-input class='nomargin w-full centered text-grey' id='address-input' readonly value='3N3RXbpGHn6bfvcE2nEYbvGHVPorVWgkeQ'></ons-input>
+<ons-input class='receive-address-input nomargin w-full centered text-grey' readonly value='...'></ons-input>
 </label>
 </ons-list-item>
 </ons-list>
-<div class='s20'></div>
+<div class='s60'></div>
 <ons-list class='balances'>
-<ons-list-header class='centered nopad'>Balance</ons-list-header>
-<ons-list-header class='centered nopad balance-crypto'>.... bits</ons-list-header>
-<ons-list-header class='centered nopad balance-fiat'>.... USD</ons-list-header>
+<!-- Balance -->
+<ons-list-header class='centered nopad'>BALANCE</ons-list-header>
+<ons-list-header class='centered nopad balance'>
+<span class='bal'>....</span>
+<span class='xp'>USD</span>
+</ons-list-header>
 </ons-list>
 </div>
 <script>
@@ -130,7 +133,7 @@ Paste
 </ons-page>
 </template>
 <template id='transactions.html'>
-<ons-page>
+<ons-page class='tpl-transactions'>
 <ons-toolbar>
 <div class='center'>Transactions</div>
 <div class='right'>
@@ -181,7 +184,7 @@ Received 26.000 bits from '386SqU....BJV'
 </ons-page>
 </template>
 <template id='settings.html'>
-<ons-page>
+<ons-page class='tpl-settings'>
 <ons-toolbar>
 <div class='center'>Settings</div>
 <div class='right'>
@@ -204,18 +207,6 @@ Reload
 </ons-page>
 </template>
 <ons-splitter>
-<ons-splitter-side collapse id='splitter' side='left' swipeable width='220px'>
-<ons-page>
-<ons-list>
-<ons-list-item onclick='fn.load(&#39;tabbar.html&#39;)' tappable>
-Home
-</ons-list-item>
-<ons-list-item onclick='fn.load(&#39;settings.html&#39;)' tappable>
-Settings
-</ons-list-item>
-</ons-list>
-</ons-page>
-</ons-splitter-side>
 <ons-splitter-content id='content' page='tabbar.html'></ons-splitter-content>
 </ons-splitter>
 </div>

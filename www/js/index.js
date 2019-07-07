@@ -1,70 +1,48 @@
 const doc = document
 
-const bindButtons = () => {
-  // doc.querySelector(".refresh-btn").addEventListener("click", refreshPage)
-}
 
-//  --------
-
-const contentLoadFailed = (err) => {
-  console.error("Content load failed")
-  console.log("Original error:")
-  console.log(err)
-}
-
-const main = {}
-
-window.fn = main
-
-main.defaultPage = "receive.html"
-main.currentPage = main.defaultPage
-
-main.open = () => {
-  const splitter = doc.querySelector('#splitter')
-  splitter.open()
-}
-
-main.setCurrentPage = (page) => (
-  () => {
-    main.currentPage = page
-  }
-)
-
-main.load = (page) => {
-  const content  = doc.querySelector('#content')
-  const splitter = doc.querySelector('#splitter')
-  content.load(page)
-    .then(splitter.close.bind(splitter))
-    .then(bindButtons)
-    .then(main.setCurrentPage(page))
-    .catch(contentLoadFailed)
-
-  // refactored:
-  //
-  // return (async () => {
-  //   const content  = doc.querySelector('#content')
-  //   const splitter = doc.querySelector('#splitter')
-  //   const contentIsLoaded = await content.load(page)
-  //   splitter.close.bind(splitter)
-  //   bindButtons()
-  //   main.setCurrentPage(page)
-  //   console.log("contentIsLoaded:", contentIsLoaded)
-  //   return contentIsLoaded
-  // })()
-}
-
-main.refreshPage = () => {
-  console.log(`refreshing ${main.currentPage}`)
-  main.load(main.currentPage)
-}
-
+// ---
 
 // TODO: merge
-
 
 class NullKeychain {}
 class NullBalance {}
 class NullRate {}
+class NullEventEmitter {}
+
+class View {
+  constructor() {
+    this.receiveInputElemSel  = ".receive-screen .receive-address-input > input"
+    this.balanceElemSel       = ".balances > .balance > .bal"
+    this.listenToAppEvents()
+  }
+
+  get receiveInputElem() {
+    return document.querySelector(this.receiveInputElemSel)
+  }
+
+  get balanceElem() {
+    return document.querySelector(this.balanceElemSel)
+  }
+
+  listenToAppEvents() {
+    const eventsSelector = "html > body > div.events" // (hidden, empty div)
+    const eventsElem = doc.querySelector(eventsSelector)
+    eventsElem.addEventListener('info', this.updateAddress.bind(this))
+    eventsElem.addEventListener('balance', this.updateBalance.bind(this))
+  }
+
+  updateAddress(evt) {
+    const { address } = evt.detail
+    this.receiveInputElem.value = address
+  }
+
+  updateBalance(evt) {
+    const { balanceUsd } = evt.detail
+    const balanceUsdRound = Math.round( balanceUsd * 100000 ) / 100000
+    this.balanceElem.innerHTML = balanceUsdRound
+  }
+}
 
 class App {
 
@@ -73,6 +51,26 @@ class App {
     this.balance    = new NullBalance()
     this.balanceUsd = new NullBalance()
     this.rate       = new NullRate()
+    this.events     = new NullEventEmitter()
+    this.addEventsEmitter()
+    this.initView()
+    this.initKeychain()
+  }
+
+  initView() {
+    new View()
+    console.log("View initialized")
+  }
+
+  addEventsEmitter() {
+    const doc = document
+    const bodyElem  = doc.querySelector("html > body")
+    const domNode   = doc.createElement("div")
+    domNode.classList = ["events"]
+    bodyElem.appendChild(domNode) // div.events.hidden (empty div)
+    const eventsElem    = doc.querySelector("html > body > div.events") // div.events.hidden (empty div)
+    const eventEmitter  =  eventsElem
+    this.events = eventEmitter
   }
 
   initKeychain() {
@@ -80,6 +78,16 @@ class App {
     const keychain = new Keychain({ store: localStorage })
     this.keychain = keychain
     // keychain.info()
+    const data = {
+      address: keychain.address
+    }
+    console.log("EMIT INFO", this.events, data)
+    const tabChangeEvt = () => {
+      console.log("TAB CHANGE")
+    }
+    document.querySelector('#main-tabbar').addEventListener('prechange', tabChangeEvt)
+    console.log("x", document.querySelector(".receive-screen .receive-address-input > input").value)
+    this.emit({ event: "info", data: data })
 
     ;(async () => {
       // TODO: port back to keychain
@@ -88,27 +96,14 @@ class App {
       this.balance = balanceEth
       this.updateBalanceUsd()
 
-
+      // events
+      //
       // require('EventEmitter')
       // we take the eventEmitter functionality from an isolated dom node
-      const doc = document
-      const bodyElem  = doc.querySelector("html > body")
-      const domNode   = doc.createElement("div")
-      domNode.classList = ["events"]
-      bodyElem.appendChild(domNode) // div.events.hidden (empty div)
-      const eventsElem = doc.querySelector("html > body > div.events") // div.events.hidden (empty div)
-      const eventEmitter =  eventsElem
-      eventEmitter.on('balance', () => {
-        console.log('an evenbalance occurred!')
-      })
-      eventEmitter.emit('balance')
-      console.log(eventEmitter, eventsElem)
 
-      this.events = eventEmitter
-      this.events.updateBalances
 
       // TODO: load cached value, load FX value from network later (10 seconds, or if everything else is loaded)
-      await app.loadFX()
+      await this.loadFX()
 
       // console.log("sendTXSelf")
       // await keychain.sendTXSelf()
@@ -118,11 +113,21 @@ class App {
     })()
   }
 
+  emit({ event, data }) {
+    // console.log("emit", event)
+    // const events = this.events
+    const events = doc.querySelector("html > body > div.events")
+    const customEvent = new CustomEvent(event, { detail: data })
+    events.dispatchEvent(customEvent)
+  }
+
   async loadFX() {
     const price = await this.getDaiPrice()
     this.rate = price
     this.updateBalanceUsd()
     console.log("Balance USD:", this.balanceUsd)
+    const data = { balanceUsd: this.balanceUsd }
+    this.emit({ event: "balance", data: data })
   }
 
   updateBalanceUsd() {
@@ -152,6 +157,18 @@ class App {
 
 }
 
-const app = new App()
+const runApp = () => {
+  const app = new App()
+}
 
-app.initKeychain()
+const pageLoaded = (event) => {
+  const page = event.target;
+  if (page.classList.contains('tpl-receive')) runApp()
+}
+
+const main = () => {
+  document.addEventListener('init', pageLoaded)
+  // window.addEventListener('DOMContentLoaded', runApp)
+}
+
+main()

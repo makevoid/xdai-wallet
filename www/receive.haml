@@ -6,7 +6,7 @@
         %ons-icon{ icon: "ion-md-settings" }
 
 .s50
-.centered
+.receive-screen.centered
 
   %ons-list
     %ons-list-header.centered.nopad Address
@@ -15,7 +15,7 @@
   .qr
     %img.rel{ src: "assets/img/qr_sample.png" }
 
-  .s20
+  .s30
 
   %ons-list.w-inner.centered
     %ons-list-item.input-items
@@ -23,14 +23,44 @@
         %a{ href: "#" }
           %ons-icon.list-item__icon{ icon: "ion-md-copy"}
       %label.centered
-        %ons-input#address-input.nomargin.w-full.centered.text-grey{ readonly: true, value: "3N3RXbpGHn6bfvcE2nEYbvGHVPorVWgkeQ" }
+        -# .receive-screen .receive-address-input
+        %ons-input.receive-address-input.nomargin.w-full.centered.text-grey{ readonly: true, value: "..." }
 
-  .s20
+  .s60
 
   %ons-list.balances
-    %ons-list-header.centered.nopad Balance
-    %ons-list-header.centered.nopad.balance-crypto  .... bits
-    %ons-list-header.centered.nopad.balance-fiat    .... USD
+    / Balance
+    %ons-list-header.centered.nopad BALANCE
+    -# :ruby
+    -#   CONF_CURRENCY = ""
+    -#
+    -#   class Conf
+    -#     def self.currency
+    -#       const currency = defined?(CONF_CURRENCY) && CONF_CURRENCY
+    -#       ENV["CONF_CURRENCY"] || currency
+    -#     end
+    -#   end
+    -# %script window.currency = #{Conf.currency}
+    :ruby
+      Conf = {}
+      def Conf.currency
+        # bitcoin
+        "bits"
+        "satoshis"
+        "xdai"
+        "USD"
+        # TODO: cleanup and add dai amount
+        "<span class='xp'>USD</span><br>(<span class='dai'>...</span> DAI)"
+        "<span class='xp'>USD</span>"
+        # currency-conversion done via cryptocompare (DAI/USD)
+        # value could be 0 if dai authorities collude
+      end
+    -# %ons-list-header.centered.nopad.balance-crypto  .... #{Conf.currency}
+    -# %ons-list-header.centered.nopad.balance-fiat
+    %ons-list-header.centered.nopad.balance
+      -# selector: .balances > .balance > .bal
+      %span.bal ....
+      #{Conf.currency}
 
 %script
   // TODO if page == receive

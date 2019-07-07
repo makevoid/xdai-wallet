@@ -15,17 +15,19 @@
     .app
       - TEMPLATES.each do |template_name|
         %template{ id: "#{template_name}.html" }
-          %ons-page
+          %ons-page{ class: "tpl-#{template_name}" }
             - partial template_name
 
       %ons-splitter
-        %ons-splitter-side#splitter{ collapse: true,  side: "left",  swipeable: true,  width: "220px" }
-          %ons-page
-            %ons-list
-              %ons-list-item{ tappable: true, onclick: "fn.load('tabbar.html')" }
-                Home
-              %ons-list-item{ tappable: true, onclick: "fn.load('settings.html')" }
-                Settings
+        -# TODO: re enable, put a hamburger button on the left of the navbar & delete .right.toolbar__right top right cog (currently used for settings, which is another page not present in the navbar)  link to hamburger button
+        -#
+        -# %ons-splitter-side#splitter{ collapse: true,  side: "left",  swipeable: true,  width: "220px" }
+        -#   %ons-page
+        -#     %ons-list
+        -#       %ons-list-item{ tappable: true, onclick: "fn.load('tabbar.html')" }
+        -#         Home
+        -#       %ons-list-item{ tappable: true, onclick: "fn.load('settings.html')" }
+        -#         Settings
 
         %ons-splitter-content#content{ page: "tabbar.html" }
 
