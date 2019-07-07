@@ -19,20 +19,21 @@
     Paste
 
   .s20
-  %ons-list{ modifier: "inset" }
+  %ons-list.send-form{ modifier: "inset" }
     %ons-list-item
       .s10
       %p
-        %ons-input{ float: "",  modifier: "underbar",  placeholder: "Recipient",  type: "text" }
+        %ons-input.recipient-address{ float: "",  modifier: "underbar",  placeholder: "Recipient",  type: "text" }
     %ons-list-header.t-center
     %ons-list-item
       .s30
       %p
-        %ons-input{ float: "",  modifier: "underbar",  placeholder: "Amount (bits)",  type: "text" }
+        %ons-input.send-amount{ float: "",  modifier: "underbar",  placeholder: "Amount (bits)",  type: "text" }
     %ons-list-item
       .s10
       %p.w-full.t-center
-        %ons-button.centered.padded{ modifier: "large", onclick: "fn.walletSend()" } Send
+        -# .send-form .send-button
+        %ons-button.send-button.centered.padded{ modifier: "large" } Send
         -# unsure to add the .fw-bold or not to the button (minimalistic/cool-ui vs usability consideration)
 
 -# %ons-fab{ position: "bottom right" }

@@ -57,24 +57,24 @@ Scan QR
 Paste
 </ons-button>
 <div class='s20'></div>
-<ons-list modifier='inset'>
+<ons-list class='send-form' modifier='inset'>
 <ons-list-item>
 <div class='s10'></div>
 <p>
-<ons-input float='' modifier='underbar' placeholder='Recipient' type='text'></ons-input>
+<ons-input class='recipient-address' float='' modifier='underbar' placeholder='Recipient' type='text'></ons-input>
 </p>
 </ons-list-item>
 <ons-list-header class='t-center'></ons-list-header>
 <ons-list-item>
 <div class='s30'></div>
 <p>
-<ons-input float='' modifier='underbar' placeholder='Amount (bits)' type='text'></ons-input>
+<ons-input class='send-amount' float='' modifier='underbar' placeholder='Amount (bits)' type='text'></ons-input>
 </p>
 </ons-list-item>
 <ons-list-item>
 <div class='s10'></div>
 <p class='w-full t-center'>
-<ons-button class='centered padded' modifier='large' onclick='fn.walletSend()'>Send</ons-button>
+<ons-button class='send-button centered padded' modifier='large'>Send</ons-button>
 </p>
 </ons-list-item>
 </ons-list>
@@ -212,6 +212,9 @@ Reload
 </div>
 <script src='cordova.js' type='text/javascript'></script>
 <script src='js/lib/eth-keychain/bundle-lib.js' type='text/javascript'></script>
+<script src='js/utils.js' type='text/javascript'></script>
+<script src='js/view.js' type='text/javascript'></script>
+<script src='js/app.js' type='text/javascript'></script>
 <script src='js/index.js' type='text/javascript'></script>
 </body>
 </html>
