@@ -1,6 +1,7 @@
 const runApp = () => {
   const app = new App()
   window.app = app
+  window.web3utils = app.keychain.web3.utils
 }
 
 let receiveLoaded = false

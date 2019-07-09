@@ -61,14 +61,14 @@ Paste
 <ons-list-item>
 <div class='s10'></div>
 <p>
-<ons-input class='recipient-address' float='' modifier='underbar' placeholder='Recipient' type='text'></ons-input>
+<ons-input class='recipient-address' float='' modifier='underbar' placeholder='Recipient' type='text' value='0x55f877D93972B39ADFE89694D7A195C7382BBAB7'></ons-input>
 </p>
 </ons-list-item>
 <ons-list-header class='t-center'></ons-list-header>
 <ons-list-item>
 <div class='s30'></div>
 <p>
-<ons-input class='send-amount' float='' modifier='underbar' placeholder='Amount (bits)' type='text'></ons-input>
+<ons-input class='send-amount' float='' modifier='underbar' placeholder='Amount (bits)' type='text' value='1'></ons-input>
 </p>
 </ons-list-item>
 <ons-list-item>
@@ -88,7 +88,8 @@ Paste
 <div class='center'>Receive</div>
 <div class='right'>
 <ons-toolbar-button>
-<a class='refresh-btn' onclick='fn.refreshPage()'>
+<!-- TODO: bind click evt -->
+<a class='refresh-btn'>
 <ons-icon icon='ion-md-settings'></ons-icon>
 </a>
 </ons-toolbar-button>
@@ -118,11 +119,18 @@ Paste
 <div class='s60'></div>
 <ons-list class='balances'>
 <!-- Balance -->
-<ons-list-header class='centered nopad'>BALANCE</ons-list-header>
+<ons-list-header class='centered nopad'>
+BALANCE
+</ons-list-header>
 <ons-list-header class='centered nopad balance'>
 <span class='bal'>....</span>
 <span class='xp'>USD</span>
 </ons-list-header>
+<div class='centered'>
+<a class='refresh-balance-btn'>
+<ons-icon icon='ion-md-refresh'></ons-icon>
+</a>
+</div>
 </ons-list>
 </div>
 <script>

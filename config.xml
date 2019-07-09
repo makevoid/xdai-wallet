@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.makevoid.bitcoinwallet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.makevoid.bitcoinwallet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>&lt;3itcoin Wallet</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -15,14 +15,18 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
+    <allow-navigation href="http://dai.mkv.run:8545/*" />
+    <allow-navigation href="http://dai.mkv.run:8545/" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
     </platform>
-    <exclude-files pattern="www/js/vendor/onsenui-dev.css" />
     <engine name="android" spec="^8.0.0" />
     <engine name="browser" spec="^6.0.0" />
     <plugin name="cordova-plugin-whitelist" spec="1" />

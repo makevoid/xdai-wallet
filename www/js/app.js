@@ -34,36 +34,17 @@ class App {
     const data = {
       address: keychain.address
     }
-    console.log("EMIT INFO", this.events, data)
-    const tabChangeEvt = () => {
-      console.log("TAB CHANGE")
-    }
-    document.querySelector('#main-tabbar').addEventListener('prechange', tabChangeEvt)
-    console.log("x", document.querySelector(".receive-screen .receive-address-input > input").value)
+    // const tabChangeEvt = () => {
+    //   console.log("tab change")
+    // }
+    // document.querySelector('#main-tabbar').addEventListener('prechange', tabChangeEvt)
     this.emit({ event: "info", data: data })
 
     ;(async () => {
-      // TODO: port back to keychain
-      const { balanceEth } = await keychain.netInfo()
-      // TODO: include rate into keychain
-      this.balance = balanceEth
-      this.updateBalanceUsd()
-
-      // events
-      //
-      // require('EventEmitter')
-      // we take the eventEmitter functionality from an isolated dom node
-
-
-      // TODO: load cached value, load FX value from network later (10 seconds, or if everything else is loaded)
-      await this.loadFX()
-
-      // console.log("sendTXSelf")
-      // await keychain.sendTXSelf()
-
-      // console.log("netInfo")
-      // await keychain.netInfo()
-    })()
+      await this.updateBalance()
+    })().catch((err) => {
+      console.error(err)
+    })
   }
 
   emit({ event, data }) {
@@ -72,6 +53,17 @@ class App {
     const events = doc.querySelector("html > body > div.events")
     const customEvent = new CustomEvent(event, { detail: data })
     events.dispatchEvent(customEvent)
+  }
+
+  async updateBalance() {
+    // TODO: port back to keychain
+    // TODO: use a balance-only function
+    const { balanceEth } = await this.keychain.netInfo()
+    // TODO: include rate into keychain
+    this.balance = balanceEth
+    this.updateBalanceUsd()
+    // TODO: load cached value, load FX value from network later (10 seconds, or if everything else is loaded)
+    await this.loadFX()
   }
 
   async loadFX() {

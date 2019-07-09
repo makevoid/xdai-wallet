@@ -9,6 +9,8 @@ This is the project directory, you'd want to open your editor from here, this is
 
 <div style="margin: 10px"></div>
 
+- create a CORS server
+- use cordova native plugin to connect directly without needing a cors server
 - reassess and address all limitations
 - add hd wallet functionality (derive 1 new child key and address per payment)
 - add hd wallet scanning/loading

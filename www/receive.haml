@@ -2,7 +2,8 @@
   .center Receive
   .right
     %ons-toolbar-button
-      %a.refresh-btn{ onclick: "fn.refreshPage()" }
+      / TODO: bind click evt
+      %a.refresh-btn
         %ons-icon{ icon: "ion-md-settings" }
 
 .s50
@@ -30,7 +31,8 @@
 
   %ons-list.balances
     / Balance
-    %ons-list-header.centered.nopad BALANCE
+    %ons-list-header.centered.nopad
+      BALANCE
     -# :ruby
     -#   CONF_CURRENCY = ""
     -#
@@ -61,6 +63,10 @@
       -# selector: .balances > .balance > .bal
       %span.bal ....
       #{Conf.currency}
+
+    .centered
+      %a.refresh-balance-btn
+        %ons-icon{ icon: "ion-md-refresh" }
 
 %script
   // TODO if page == receive

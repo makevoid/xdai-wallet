@@ -19,16 +19,19 @@
     Paste
 
   .s20
+  :ruby
+    recipient_test = "0x55f877D93972B39ADFE89694D7A195C7382BBAB7"
+    amount_test = 1
   %ons-list.send-form{ modifier: "inset" }
     %ons-list-item
       .s10
       %p
-        %ons-input.recipient-address{ float: "",  modifier: "underbar",  placeholder: "Recipient",  type: "text" }
+        %ons-input.recipient-address{ float: "",  modifier: "underbar",  placeholder: "Recipient",  type: "text", value: recipient_test }
     %ons-list-header.t-center
     %ons-list-item
       .s30
       %p
-        %ons-input.send-amount{ float: "",  modifier: "underbar",  placeholder: "Amount (bits)",  type: "text" }
+        %ons-input.send-amount{ float: "",  modifier: "underbar",  placeholder: "Amount (bits)",  type: "text", value: amount_test }
     %ons-list-item
       .s10
       %p.w-full.t-center
