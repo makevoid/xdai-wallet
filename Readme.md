@@ -1,4 +1,51 @@
-# 3itcoin-wallet
+# xdai-wallet
+
+forked from https://github.com/makevoid/3itcoin-wallet
+
+This is reusing the same UI and plugging another keychain:
+
+https://github.com/makevoid/3itcoin-wallet
+
+
+xDai is not an ERC20, it is not also on main ethereum, it's on a PoA parity network.
+ 
+TODO: add links
+ 
+- poa network
+- 
+
+TODO:
+
+add an explanation of an ethereum token (ERC20)
+
+attempt:
+
+An ERC20 (or derivatives) is a token, or FT (Fungible Token). It's a token that works on top of Ethereum
+
+xDai peculiarity is this: by being a sidechain the "token" is represented in xDai ETHs
+
+The peg is centralized (a number of authorities running the chain and other (or the same) authorities having some sort of power in modifying the contracts used for the bridge(s)
+
+Sidechains are currently a not super secure
+
+But, if you use them for a small amount of funds, you can't negate their convenient nature.
+
+You want to hear another nice thing about sidechains? They're cheap! A transaction costs 0.3 of a cent and the nice thing is that the price is stable (and the cap of a PoA/PoS/non-pow network is high!) 
+
+TODO: finish notes
+add speed as the other plus of a 
+
+add superplus - this is the first stable coin backed by real value in the blockchain world (crypto)
+
+add minuses as well
+- centralization
+- security
+- stability of the supply
+
+
+---
+
+TODO: remove bitcoin LN doc, leave only xdai related stuff
 
 ### Bitcoin Lightning Network wallet
 
