@@ -90,9 +90,13 @@ centered padded button button--large {
 .padded {
   padding-top: 10px;
   padding-bottom: 8px;
-  width: 80%;
+  /* width: 80%; */
 }
 
 .fw-bold {
   font-weight: bold;
+}
+
+.btn-width-150 {
+  width: 150px;
 }
