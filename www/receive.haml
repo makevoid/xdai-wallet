@@ -33,22 +33,9 @@
     / Balance
     %ons-list-header.centered.nopad
       BALANCE
-    -# :ruby
-    -#   CONF_CURRENCY = ""
-    -#
-    -#   class Conf
-    -#     def self.currency
-    -#       const currency = defined?(CONF_CURRENCY) && CONF_CURRENCY
-    -#       ENV["CONF_CURRENCY"] || currency
-    -#     end
-    -#   end
-    -# %script window.currency = #{Conf.currency}
     :ruby
       Conf = {}
       def Conf.currency
-        # bitcoin
-        "bits"
-        "satoshis"
         "xdai"
         "USD"
         # TODO: cleanup and add dai amount
@@ -57,8 +44,6 @@
         # currency-conversion done via cryptocompare (DAI/USD)
         # value could be 0 if dai authorities collude
       end
-    -# %ons-list-header.centered.nopad.balance-crypto  .... #{Conf.currency}
-    -# %ons-list-header.centered.nopad.balance-fiat
     %ons-list-header.centered.nopad.balance
       -# selector: .balances > .balance > .bal
       %span.bal ....
