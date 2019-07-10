@@ -10,7 +10,7 @@
 .receive-screen.centered
 
   %ons-list
-    %ons-list-header.centered.nopad Address
+    %ons-list-header.centered.nopad.bgtheme Address
   -# %p.centered Address
 
   .qr
@@ -31,7 +31,7 @@
 
   %ons-list.balances
     / Balance
-    %ons-list-header.centered.nopad
+    %ons-list-header.centered.nopad.bgtheme
       BALANCE
     :ruby
       Conf = {}
@@ -44,12 +44,12 @@
         # currency-conversion done via cryptocompare (DAI/USD)
         # value could be 0 if dai authorities collude
       end
-    %ons-list-header.centered.nopad.balance
+    %ons-list-header.centered.nopad.balance.bgtheme
       -# selector: .balances > .balance > .bal
       %span.bal ....
       #{Conf.currency}
 
-    .centered
+    .centered.bgtheme
       %a.refresh-balance-btn
         %ons-icon{ icon: "ion-md-refresh" }
 

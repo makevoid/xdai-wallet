@@ -20,6 +20,7 @@ const pageLoaded = (event) => {
 }
 
 const main = () => {
+  ons.bootstrap()
   document.addEventListener('init', pageLoaded)
   // window.addEventListener('DOMContentLoaded', runApp)
 }

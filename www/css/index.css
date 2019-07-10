@@ -87,6 +87,8 @@ centered padded button button--large {
 
 }
 
+/* todo: refactor */
+
 .padded {
   padding-top: 10px;
   padding-bottom: 8px;
@@ -99,4 +101,22 @@ centered padded button button--large {
 
 .btn-width-150 {
   width: 150px;
+}
+
+.bgtheme {
+  background: #efeff4;
+}
+
+.wfull {
+  width: 100%;
+}
+
+/* buttons */
+
+ons-col.btn, .btn {
+  /* placeholder */
+}
+
+ons-col.btn.btn-info, .btn.btn-info {
+  background: #9ae;
 }
