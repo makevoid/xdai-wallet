@@ -26290,7 +26290,7 @@ class Keychain {
 
   async send({ to, value }) {
     console.log("constructing tx")
-    const txAttrs = txAttrsXDai({ to: this.address, value: 1000000000000 })
+    const txAttrs = txAttrsXDai({ to: to, value: 1000000000000 })
     const rawTx = await this.signTx(txAttrs, this.pvtKeyEth)
     // console.log("rawTx:", rawTx)
     console.log("submitting tx...")

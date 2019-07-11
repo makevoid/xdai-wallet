@@ -23,10 +23,9 @@ const pageLoaded = (event) => {
 }
 
 const main = () => {
-  ons.bootstrap()
+  // ons.bootstrap() // TODO: delete line? not needed or not loaded?
   document.addEventListener('init', pageLoaded)
   // window.addEventListener('DOMContentLoaded', runApp)
-  bindNotEnabledButtons()
 }
 
 main()

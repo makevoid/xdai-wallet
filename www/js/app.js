@@ -14,7 +14,18 @@ class App {
   initView() {
     new View()
     console.log("View initialized")
+    this.initDevViewHacks()
   }
+
+  // TODO: temporary, remove
+
+  initDevViewHacks() {
+    // TODO: move into view / actions
+    bindSettingsBtn()
+    bindNotEnabledButtons()
+  }
+
+
 
   addEventsEmitter() {
     const bodyElem  = doc.querySelector("html > body")

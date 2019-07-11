@@ -19,6 +19,27 @@
           %ons-page{ class: "tpl-#{template_name}" }
             - partial template_name
 
+    -# action sheet component
+    -# %template{:id => "settings-action-sheet.html"}
+    -#   %ons-action-sheet#sheet{ cancelable: "",  title: "Settings" }
+    -#     %ons-action-sheet-button{ icon: "md-square-o",  onclick: "app.hideFromTemplate()" } Export Private Key
+    -#     %ons-action-sheet-button{ icon: "md-square-o",  onclick: "app.hideFromTemplate()" }
+    -# %script{ defer: true, async: true }
+    -#   :plain
+    -#     var app = {}
+    -#
+    -#     ons.ready(() => {
+    -#       ;(async () => {
+    -#         const createElem = () => ons.createElement('settings-action-sheet.html', { append: true })
+    -#         const sheet = await createElem()
+    -#         app.showFromTemplate = sheet.show.bind(sheet)
+    -#         app.hideFromTemplate = sheet.hide.bind(sheet)
+    -#       })().catch(console.error)
+    -#     })
+
+%ons-page
+  %ons-toolbar
+    .center
       %ons-splitter
         -# TODO: re enable, put a hamburger button on the left of the navbar & delete .right.toolbar__right top right cog (currently used for settings, which is another page not present in the navbar)  link to hamburger button
         -#

@@ -6,20 +6,17 @@ const showTODONotification = () => {
   ons.notification.toast(message, opts)
 }
 
-const bindNotEnabledButtons = () => {
+const bindSettingsBtn = () => {
   const settingsSel   = ".icon-main-right.icon-settings"
+  const settingsElem  = document.querySelector(settingsSel)
+  settingsElem.addEventListener('click', showTODONotification)
+}
+
+const bindNotEnabledButtons = () => {
   const qrScanSel     = ".btn-scan.button-scan"
   const pasteSel      = ".btn-paste.button-paste"
-  const settingsElem  = document.querySelector(settingsSel)
   const qrScanElem    = document.querySelector(qrScanSel)
   const pasteElem     = document.querySelector(pasteSel)
-  settingsElem.addEventListener('click', showTODONotification)
   qrScanElem.addEventListener('click', showTODONotification)
-  pasteElem.addEventListener('click', showTODONotification)
-
-  return {
-    settingsElem,
-    qrScanElem,
-    pasteElem,
-  }
+  pasteElem.addEventListener('click',  showTODONotification)
 }
