@@ -72,6 +72,13 @@ ons-icon .ion-md-arrow-down {
   display: none;
 }
 
+/* toasts copypaste fix */
+
+.modals, .toast,  {
+  user-select: all;
+
+}
+
 /* screens - transactions */
 
 .transactions.tx-list  {

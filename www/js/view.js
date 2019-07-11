@@ -16,6 +16,14 @@ const errToast = (message) => {
   ons.notification.toast(message, { timeout: 1000, animation: 'fall' })
 }
 
+// view helpers
+
+const usdCentsToXDaiWeis = (usdCents) => {
+  // TODO: use bignumber
+  const xDaiWeisAmount = new Number(usdCents) * 10 ** 16
+  return xDaiWeisAmount
+}
+
 Actions = {}
 
 Actions.displaySendAddressMissingError = () => {
@@ -34,12 +42,14 @@ Actions.updateBalance = async () => {
 // TODO:
 Actions.send = async ({ address, amount }) => {
   console.log("SEND", { address, amount })
-  const to = address
-  const value = amount
+  const to  = address
+  let value = amount
   if (!address) return Actions.displaySendAddressMissingError()
   if (!amount)  return Actions.displaySendAmountMissingError()
   if (!isEthAddress(address)) return Actions.displaySendError()
+  value = usdCentsToXDaiWeis(value)
   msgToast("sending transaction...")
+  console.log(`Actions.send() -> ${JSON.stringify({ to, value })}`)
   const txID = await window.app.keychain.send({ to, value })
   console.log("TX ID:", txID)
   msgToast(`transaction sent! 0x${txID.slice(0, 6)}...`)
@@ -60,6 +70,7 @@ class View {
 
 
   bindButtons() {
+    console.log("BIND")
     this.sendButton.addEventListener("click", this.triggerSend.bind(this))
     this.refreshBalanceBtn.addEventListener("click", this.refreshBalance.bind(this))
   }
@@ -69,6 +80,7 @@ class View {
     const amount  = this.sendAmountElem.value
     ;(async () => {
       await Actions.send({ address, amount })
+      setTimeout(async () => this.refreshBalance().bind(this), 10000)
     })().catch((err) => {
       console.error(err)
     })
@@ -96,8 +108,10 @@ class View {
 
   updateBalance(evt) {
     const { balanceUsd } = evt.detail
-    const balanceUsdRound = Math.round( balanceUsd * 100000 ) / 100000
-    this.balanceElem.innerHTML = balanceUsdRound
+    // TODO: use bignumber
+    const balanceUsdCents = balanceUsd * 10 ** 2
+    const balanceCentsRound = Math.floor(balanceUsdCents * 100) / 100
+    this.balanceElem.innerHTML = balanceCentsRound
   }
 
   // element getters (helpers)
@@ -125,4 +139,5 @@ class View {
   get refreshBalanceBtn() {
     return doc.querySelector(this.refreshBalanceBtnSel)
   }
+
 }

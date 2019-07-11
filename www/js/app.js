@@ -7,14 +7,16 @@ class App {
     this.rate       = new NullRate()
     this.events     = new NullEventEmitter()
     this.addEventsEmitter()
-    this.initView()
+    this.view = this.initView()
     this.initKeychain()
   }
 
   initView() {
-    new View()
+    if (this.view) return this.view
+    const view = new View()
     console.log("View initialized")
     this.initDevViewHacks()
+    return view
   }
 
   // TODO: temporary, TODO: integrate
@@ -77,6 +79,7 @@ class App {
     this.rate = price
     this.updateBalanceUsd()
     console.log("Balance USD:", this.balanceUsd)
+    console.log("Balance USD cents:", Math.round(this.balanceUsd * 100 * 100) / 100)
     const data = { balanceUsd: this.balanceUsd }
     this.emit({ event: "balance", data: data })
   }

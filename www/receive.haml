@@ -33,17 +33,6 @@
     / Balance
     %ons-list-header.centered.nopad.bgtheme
       BALANCE
-    :ruby
-      Conf = {}
-      def Conf.currency
-        "xdai"
-        "USD"
-        # TODO: cleanup and add dai amount
-        "<span class='xp'>USD</span><br>(<span class='dai'>...</span> DAI)"
-        "<span class='xp'>USD</span>"
-        # currency-conversion done via cryptocompare (DAI/USD)
-        # value could be 0 if dai authorities collude
-      end
     %ons-list-header.centered.nopad.balance.bgtheme
       -# selector: .balances > .balance > .bal
       %span.bal ....
