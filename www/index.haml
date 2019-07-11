@@ -19,48 +19,15 @@
           %ons-page{ class: "tpl-#{template_name}" }
             - partial template_name
 
-    -# action sheet component
-    -# %template{:id => "settings-action-sheet.html"}
-    -#   %ons-action-sheet#sheet{ cancelable: "",  title: "Settings" }
-    -#     %ons-action-sheet-button{ icon: "md-square-o",  onclick: "app.hideFromTemplate()" } Export Private Key
-    -#     %ons-action-sheet-button{ icon: "md-square-o",  onclick: "app.hideFromTemplate()" }
-    -# %script{ defer: true, async: true }
-    -#   :plain
-    -#     var app = {}
-    -#
-    -#     ons.ready(() => {
-    -#       ;(async () => {
-    -#         const createElem = () => ons.createElement('settings-action-sheet.html', { append: true })
-    -#         const sheet = await createElem()
-    -#         app.showFromTemplate = sheet.show.bind(sheet)
-    -#         app.hideFromTemplate = sheet.hide.bind(sheet)
-    -#       })().catch(console.error)
-    -#     })
-
-%ons-page
-  %ons-toolbar
-    .center
       %ons-splitter
-        -# TODO: re enable, put a hamburger button on the left of the navbar & delete .right.toolbar__right top right cog (currently used for settings, which is another page not present in the navbar)  link to hamburger button
-        -#
-        -# %ons-splitter-side#splitter{ collapse: true,  side: "left",  swipeable: true,  width: "220px" }
-        -#   %ons-page
-        -#     %ons-list
-        -#       %ons-list-item{ tappable: true, onclick: "fn.load('tabbar.html')" }
-        -#         Home
-        -#       %ons-list-item{ tappable: true, onclick: "fn.load('settings.html')" }
-        -#         Settings
-
         %ons-splitter-content#content{ page: "tabbar.html" }
 
 
     %script{ src: "cordova.js",  type: "text/javascript" }
     %script{ src: "js/lib/eth-keychain/bundle-lib.js",  type: "text/javascript" }
-    -# %script{ src: "node_modules/hyperhtml/min.js",  type: "text/javascript" }
-    -# %script{ src: "node_modules/web3/dist/web3.umd.js",  type: "text/javascript" }
 
     // dev version imports - TODO: remove for open beta release
-    %script{ src: "js/lib/bind-unused-btns.js", type: "text/javascript" }
+    %script{ src: "js/lib/bind-dev-btns.js", type: "text/javascript" }
 
     %script{ src: "js/utils.js", type: "text/javascript" }
     %script{ src: "js/view.js", type: "text/javascript" }

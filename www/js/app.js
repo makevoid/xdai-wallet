@@ -17,15 +17,11 @@ class App {
     this.initDevViewHacks()
   }
 
-  // TODO: temporary, remove
+  // TODO: temporary, TODO: integrate
 
   initDevViewHacks() {
-    // TODO: move into view / actions
-    bindSettingsBtn()
-    bindNotEnabledButtons()
+    bindDevButtons()
   }
-
-
 
   addEventsEmitter() {
     const bodyElem  = doc.querySelector("html > body")
@@ -38,7 +34,6 @@ class App {
   }
 
   initKeychain() {
-    console.log("init keychain")
     const keychain = new Keychain({ store: localStorage })
     this.keychain = keychain
     // keychain.info()

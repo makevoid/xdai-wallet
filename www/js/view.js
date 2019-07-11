@@ -28,7 +28,7 @@ Actions.displaySendAmountMissingError = () => {
 
 Actions.updateBalance = async () => {
   await window.app.updateBalance()
-  msgToastQuick("refreshed")
+  msgToastQuick("Balance refreshed!")
 }
 
 // TODO:
@@ -60,7 +60,6 @@ class View {
 
 
   bindButtons() {
-    console.log("BIND")
     this.sendButton.addEventListener("click", this.triggerSend.bind(this))
     this.refreshBalanceBtn.addEventListener("click", this.refreshBalance.bind(this))
   }
