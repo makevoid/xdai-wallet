@@ -3,7 +3,7 @@
   .right
     %ons-toolbar-button
       %a.refresh-btn{ onclick: "fn.refreshPage()" }
-        %ons-icon{ icon: "ion-md-settings" }
+        %ons-icon.icon-main-right.icon-settings{ icon: "ion-md-settings" }
 
 .centered
   .s30
@@ -11,14 +11,14 @@
   %ons-row
     %ons-col
     %ons-col
-      %ons-button.btn-width-150.btn.btn-info
-        %i.ion-md-qr-scanner
+      %ons-button.btn-width-150.btn.btn-info.btn-scan.button-scan
+        %i.ion-md-qr-scanner.icons-scan
         \&nbsp;
         Scan QR
     %ons-col
     %ons-col
-      %ons-button.btn-width-150.btn.btn-info
-        %i.ion-md-clipboard
+      %ons-button.btn-width-150.btn.btn-info.btn-paste.button-paste
+        %i.ion-md-clipboard.icons-paste
         \&nbsp;
         Paste
     %ons-col

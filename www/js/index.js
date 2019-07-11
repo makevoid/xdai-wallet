@@ -1,3 +1,6 @@
+// App = require('./app')
+// bindNotEnabledButtons = require('./tmp/bind-unused-btns')
+
 const runApp = () => {
   const app = new App()
   window.app = app
@@ -23,6 +26,7 @@ const main = () => {
   ons.bootstrap()
   document.addEventListener('init', pageLoaded)
   // window.addEventListener('DOMContentLoaded', runApp)
+  bindNotEnabledButtons()
 }
 
 main()
