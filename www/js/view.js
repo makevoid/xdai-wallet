@@ -68,7 +68,6 @@ class View {
     this.bindButtons()
   }
 
-
   bindButtons() {
     console.log("BIND")
     this.sendButton.addEventListener("click", this.triggerSend.bind(this))
@@ -109,7 +108,7 @@ class View {
   updateBalance(evt) {
     const { balanceUsd } = evt.detail
     // TODO: use bignumber
-    const balanceUsdCents = balanceUsd * 10 ** 2
+    const balanceUsdCents   = balanceUsd * 10 ** 2
     const balanceCentsRound = Math.floor(balanceUsdCents * 100) / 100
     this.balanceElem.innerHTML = balanceCentsRound
   }
