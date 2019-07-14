@@ -1,59 +1,5 @@
-// animation-options: { duration: 0.2, delay: 1, timing: 'ease-in' }
 
-const isEthAddress = (address) => (
-  window.web3utils.isAddress(address)
-)
-
-const msgToast = (message) => {
-  ons.notification.toast(message, { timeout: 1000, animation: 'default' })
-}
-
-const msgToastQuick = (message) => {
-  ons.notification.toast(message, { timeout: 200, animation: 'default' })
-}
-
-const errToast = (message) => {
-  ons.notification.toast(message, { timeout: 1000, animation: 'fall' })
-}
-
-// view helpers
-
-const usdCentsToXDaiWeis = (usdCents) => {
-  // TODO: use bignumber
-  const xDaiWeisAmount = new Number(usdCents) * 10 ** 16
-  return xDaiWeisAmount
-}
-
-Actions = {}
-
-Actions.displaySendAddressMissingError = () => {
-  errToast("Please specify the recipient address")
-}
-
-Actions.displaySendAmountMissingError = () => {
-  errToast("Please specify the amount of the transaction")
-}
-
-Actions.updateBalance = async () => {
-  await window.app.updateBalance()
-  msgToastQuick("Balance refreshed!")
-}
-
-// TODO:
-Actions.send = async ({ address, amount }) => {
-  console.log("SEND", { address, amount })
-  const to  = address
-  let value = amount
-  if (!address) return Actions.displaySendAddressMissingError()
-  if (!amount)  return Actions.displaySendAmountMissingError()
-  if (!isEthAddress(address)) return Actions.displaySendError()
-  value = usdCentsToXDaiWeis(value)
-  msgToast("sending transaction...")
-  console.log(`Actions.send() -> ${JSON.stringify({ to, value })}`)
-  const txID = await window.app.keychain.send({ to, value })
-  console.log("TX ID:", txID)
-  msgToast(`transaction sent! 0x${txID.slice(0, 6)}...`)
-}
+// const Actions = require('./actions')
 
 class View {
   constructor() {
@@ -79,7 +25,7 @@ class View {
     const amount  = this.sendAmountElem.value
     ;(async () => {
       await Actions.send({ address, amount })
-      setTimeout(async () => this.refreshBalance().bind(this), 10000)
+      setTimeout(async () => this.refreshBalance(), 10000)
     })().catch((err) => {
       console.error(err)
     })

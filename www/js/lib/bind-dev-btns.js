@@ -10,7 +10,7 @@ const onsToastDefaultOpts = { timeout: 1100, animation: 'default' }
 const onsToastSlowOpts    = { timeout: 2500, animation: 'default' }
 
 const showAddrCopyMsg = () => {
-  const message = "Address copied"
+  const message = "Address copied (NOT TRUE - TODO :D)"
   onsToast(message, onsToastDefaultOpts)
 }
 
