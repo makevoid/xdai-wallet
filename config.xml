@@ -20,6 +20,7 @@
     <platform name="android">
         <allow-intent href="market:*" />
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <!-- TODO: recheck this config -->
             <application android:usesCleartextTraffic="true" />
         </edit-config>
     </platform>
