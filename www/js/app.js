@@ -42,10 +42,6 @@ class App {
     const data = {
       address: keychain.address
     }
-    // const tabChangeEvt = () => {
-    //   console.log("tab change")
-    // }
-    // document.querySelector('#main-tabbar').addEventListener('prechange', tabChangeEvt)
     this.emit({ event: "info", data: data })
 
     ;(async () => {
